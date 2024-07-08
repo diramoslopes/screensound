@@ -58,7 +58,7 @@ void ExibirOpcoesDoMenu()
             break;
 
         case 4:
-            Console.WriteLine("Voce escolheu a opção " + opcaoEscolhidaNumerica);
+            MediaDeUmaBanda();
             break;
         case -1:
             Console.WriteLine("Tchau tchau :) ");
@@ -148,6 +148,31 @@ void AvaliarUmaBanda()
         Console.Clear();
         ExibirOpcoesDoMenu();
 
+    }
+}
+
+void MediaDeUmaBanda()
+{
+    Console.Clear();
+    ExibirTituloDaOpcao("Média da Banda");
+    Console.WriteLine("Digite o nome da banda que deseja ver a média: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    if (bandasRegistradas.ContainsKey(nomeDaBanda))
+    {
+        double bandaMedia = bandasRegistradas[nomeDaBanda].Average();
+        Console.WriteLine($"A média da banda {nomeDaBanda} é: {bandaMedia}");
+        Thread.Sleep(4000);
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+
+    }
+    else
+    {
+        Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principál");
+        Console.ReadKey();
+        Console.Clear();
+        ExibirOpcoesDoMenu();
     }
 }
 
